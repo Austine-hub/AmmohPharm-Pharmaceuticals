@@ -1,0 +1,612 @@
+/*src/components/header/Header.module.css*/
+
+
+/* ========================================
+   Healthcare Header Styles - AMMOHPharm
+   Professional, Clean, Medical-Grade Design
+   ======================================== */
+
+/* Top Bar - Emergency Info */
+.topBar {
+  background: linear-gradient(135deg, #0071dc 0%, #0056b3 100%);
+  color: #ffffff;
+  font-size: 0.813rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: none;
+  
+}
+
+.topBarContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  
+}
+
+.topBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.topBarRight {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.emergencyText {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.separator {
+  opacity: 0.4;
+}
+
+.topBarLink {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.topBarLink:hover {
+  opacity: 0.85;
+  text-decoration: underline;
+}
+
+/* Main Header */
+.header {
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header.scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.header.scrolled .mainHeader {
+  padding: 0.75rem 0;
+}
+
+.mainHeader {
+  border-bottom: 2px solid #f0f4f8;
+  padding: 1rem 0;
+  transition: padding 0.3s ease;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Logo Section */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: translateY(-1px);
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logoIcon svg {
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 113, 220, 0.15));
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.brandName {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: #1a2332;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.brandTagline {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #0071dc;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+/* Search Container - Desktop */
+.searchContainer {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 520px;
+  gap: 0;
+}
+
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px 0 0 8px;
+  border-right: none;
+  transition: all 0.2s ease;
+}
+
+.searchWrapper:focus-within {
+  background: #ffffff;
+  border-color: #0071dc;
+  box-shadow: 0 0 0 3px rgba(0, 113, 220, 0.1);
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1rem;
+  color: #64748b;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+.searchWrapper:focus-within .searchIcon {
+  color: #0071dc;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.875rem 2.75rem 0.875rem 3rem;
+  border: none;
+  background: transparent;
+  font-size: 0.938rem;
+  color: #1a2332;
+  outline: none;
+  font-weight: 400;
+}
+
+.searchInput::placeholder {
+  color: #94a3b8;
+}
+
+.clearBtn {
+  position: absolute;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.clearBtn:hover {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.searchBtn {
+  background: linear-gradient(135deg, #0071dc 0%, #0056b3 100%);
+  border: none;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.938rem;
+  box-shadow: 0 2px 6px rgba(0, 113, 220, 0.2);
+}
+
+.searchBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 113, 220, 0.3);
+  background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
+}
+
+.searchBtn:active {
+  transform: translateY(0);
+}
+
+.searchBtnText {
+  display: inline;
+}
+
+/* Contact Section */
+.contactSection {
+  display: flex;
+  align-items: center;
+  padding-left: 1.5rem;
+  border-left: 2px solid #e2e8f0;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.contact:hover {
+  transform: translateY(-1px);
+}
+
+.contactIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #0071dc 0%, #0056b3 100%);
+  border-radius: 10px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 113, 220, 0.2);
+}
+
+.contactIcon {
+  color: #ffffff;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.contactLabel {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contactNumber {
+  font-size: 1.125rem;
+  color: #1a2332;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Mobile Menu Toggle */
+.menuToggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #1a2332;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.menuToggle:hover {
+  background: #f8fafc;
+}
+
+.menuToggle:active {
+  background: #f1f5f9;
+}
+
+/* Mobile Search Bar */
+.mobileSearchContainer {
+  display: none;
+  padding: 0.75rem 1rem 1rem;
+  background: #ffffff;
+  border-bottom: 2px solid #f0f4f8;
+}
+
+.mobileSearchForm {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.mobileSearchForm:focus-within {
+  background: #ffffff;
+  border-color: #0071dc;
+  box-shadow: 0 0 0 3px rgba(0, 113, 220, 0.1);
+}
+
+.mobileSearchIcon {
+  position: absolute;
+  left: 1rem;
+  color: #64748b;
+  pointer-events: none;
+}
+
+.mobileSearchForm:focus-within .mobileSearchIcon {
+  color: #0071dc;
+}
+
+.mobileSearchInput {
+  width: 100%;
+  padding: 0.875rem 2.75rem 0.875rem 3rem;
+  border: none;
+  background: transparent;
+  font-size: 0.938rem;
+  color: #1a2332;
+  outline: none;
+}
+
+.mobileSearchInput::placeholder {
+  color: #94a3b8;
+}
+
+.mobileClearBtn {
+  position: absolute;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.mobileClearBtn:hover {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet - Large (1024px - 1280px) */
+@media (max-width: 1280px) {
+  .searchContainer {
+    max-width: 420px;
+  }
+
+  .contactSection {
+    padding-left: 1rem;
+  }
+
+  .searchBtnText {
+    display: none;
+  }
+
+  .searchBtn {
+    padding: 0.875rem 1.25rem;
+  }
+}
+
+/* Tablet - Medium (768px - 1023px) */
+@media (max-width: 1023px) {
+  .topBar {
+    font-size: 0.75rem;
+  }
+
+  .topBarContainer {
+    padding: 0 1.5rem;
+  }
+
+  .topBarRight {
+    gap: 0.5rem;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .brandName {
+    font-size: 1.375rem;
+  }
+
+  .logoIcon svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .searchContainer {
+    display: none;
+  }
+
+  .contactSection {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .contact {
+    gap: 0.625rem;
+  }
+
+  .contactIconWrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contactLabel {
+    font-size: 0.688rem;
+  }
+
+  .contactNumber {
+    font-size: 1rem;
+  }
+
+  .menuToggle {
+    display: flex;
+  }
+
+  .mobileSearchContainer {
+    display: block;
+  }
+}
+
+/* Mobile - Large (481px - 767px) */
+@media (max-width: 767px) {
+  .topBarLeft span {
+    display: none;
+  }
+
+  .topBarLeft::after {
+    content: 'Juja, KE';
+  }
+
+  .emergencyText {
+    font-size: 0.688rem;
+  }
+
+  .contactSection {
+    display: none;
+  }
+
+  .brandName {
+    font-size: 1.25rem;
+  }
+
+  .brandTagline {
+    font-size: 0.688rem;
+  }
+    .mobileSearchContainer {
+    display: none;
+  }
+}
+
+/* Mobile - Small (320px - 480px) */
+@media (max-width: 480px) {
+  .topBar {
+    padding: 0.375rem 0;
+    font-size: 0.688rem;
+  }
+
+  .topBarContainer {
+    padding: 0 1rem;
+  }
+
+  .topBarRight {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.125rem;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .mainHeader {
+    padding: 0.875rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .logo {
+    gap: 0.75rem;
+  }
+
+  .logoIcon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brandName {
+    font-size: 1.125rem;
+  }
+
+  .brandTagline {
+    font-size: 0.625rem;
+  }
+
+  .menuToggle {
+    padding: 0.375rem;
+  }
+
+  .mobileSearchContainer {
+    padding: 0.625rem 1rem 0.875rem;
+  }
+
+  .mobileSearchInput {
+    padding: 0.813rem 2.5rem 0.813rem 2.75rem;
+    font-size: 0.875rem;
+  }
+
+  .mobileSearchIcon {
+    left: 0.875rem;
+  }
+
+  .mobileClearBtn {
+    right: 0.625rem;
+  }
+
+    .mobileSearchContainer {
+    display: none;
+  }
+}
+
+/* Extra Small Devices (< 360px) */
+@media (max-width: 359px) {
+  .topBarContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .brandText {
+    display: none;
+  }
+
+  .logo {
+    gap: 0;
+  }
+}

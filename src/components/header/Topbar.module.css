@@ -1,0 +1,251 @@
+.header {
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Logo Styles */
+.logo {
+  flex-shrink: 0;
+  width: 200px;
+}
+
+.logoSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.prestonsText {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 48px;
+  font-weight: 400;
+  fill: #000;
+  font-style: italic;
+}
+
+.pharmacyText {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  fill: #000;
+  letter-spacing: 3px;
+}
+
+.sinceText {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  fill: #000;
+  letter-spacing: 2px;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navList li {
+  margin: 0;
+}
+
+.navList a {
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 400;
+  transition: color 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.navList a:hover,
+.navList a:focus {
+  color: #0a5870;
+  outline: none;
+}
+
+/* Login Button */
+.loginBtn {
+  background: #0a5870;
+  color: #fff;
+  padding: 0.75rem 1.75rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.loginBtn:hover,
+.loginBtn:focus {
+  background: #084558;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(10, 88, 112, 0.2);
+  outline: 2px solid #0a5870;
+  outline-offset: 2px;
+}
+
+/* Mobile Menu Toggle */
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.menuToggle span {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.menuToggle:hover span {
+  background: #0a5870;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .navList {
+    gap: 1.5rem;
+  }
+  
+  .navList a {
+    font-size: 0.9rem;
+  }
+  
+  .loginBtn {
+    padding: 0.65rem 1.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 1.5rem;
+  }
+  
+  .logo {
+    width: 160px;
+  }
+  
+  .menuToggle {
+    display: flex;
+  }
+  
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem 2rem 2rem;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    gap: 2rem;
+  }
+  
+  .navOpen {
+    right: 0;
+  }
+  
+  .navList {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    width: 100%;
+  }
+  
+  .navList a {
+    font-size: 1.1rem;
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+  
+  .loginBtn {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.75rem 1rem;
+  }
+  
+  .logo {
+    width: 140px;
+  }
+  
+  .prestonsText {
+    font-size: 42px;
+  }
+  
+  .pharmacyText {
+    font-size: 14px;
+  }
+  
+  .sinceText {
+    font-size: 9px;
+  }
+  
+  .nav {
+    width: 100%;
+    right: -100%;
+  }
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid #0a5870;
+  outline-offset: 2px;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  :global(*),
+   :global(*),::before,
+   :global(*)::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

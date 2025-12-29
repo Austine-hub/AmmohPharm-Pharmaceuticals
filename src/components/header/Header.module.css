@@ -74,10 +74,10 @@
 }
 
 .brandTagline {
-  font-size: 0.75rem;
+  font-size: 1.155rem;
   font-weight: 500;
   color: #0071dc;
-  text-transform: uppercase;
+  text-transform: lowercase;
   letter-spacing: 0.08em;
 }
 
@@ -593,7 +593,7 @@
   }
 
   .brandTagline {
-    font-size: 0.688rem;
+    font-size: 0.488rem;
   }
     .mobileSearchContainer {
     display: none;
@@ -683,7 +683,7 @@
   }
 
   .brandTagline {
-    font-size: 0.625rem;
+    font-size: 0.325rem;
   }
 
   .menuToggle {

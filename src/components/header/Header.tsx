@@ -131,7 +131,7 @@ const Header: FC<HeaderProps> = ({ onMenuToggle, isMenuOpen = false }) => {
             </div>
             <div className={styles.brandText}>
               <span className={styles.brandName}>AMMOHPharm</span>
-              <span className={styles.brandTagline}>Healthcare Solutions</span>
+              <span className={styles.brandTagline}>caring beyond prescriptions</span>
             </div>
           </Link>
 

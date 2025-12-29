@@ -2,10 +2,11 @@
 
 'use client';
 
-import { FC, useEffect, useState, useCallback, useRef } from 'react';
-import { Menu, X, Search, Phone, MapPin } from 'lucide-react';
+import { FC, useEffect, useState, useCallback, useRef, useMemo } from 'react';
 import Link from 'next/link';
+import { Menu, Search, Phone, Heart, X, User, ShoppingBag } from 'lucide-react';
 import styles from './Header.module.css';
+import { useCartCount, useCartSubtotal } from '@/context/CartContext';
 
 interface HeaderProps {
   onMenuToggle: () => void;
@@ -17,6 +18,26 @@ const Header: FC<HeaderProps> = ({ onMenuToggle, isMenuOpen = false }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const totalItems = useCartCount();
+  const subtotal = useCartSubtotal();
+
+    const formattedPrice = useMemo(() => 
+    new Intl.NumberFormat('en-KE', {
+      style: 'currency',
+      currency: 'KES',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(subtotal),
+    [subtotal]
+  );
+
+  const cartAriaLabel = useMemo(() => 
+    `Shopping cart with ${totalItems} ${totalItems === 1 ? 'item' : 'items'}, total ${formattedPrice}`,
+    [totalItems, formattedPrice]
+  );
+
+   const displayBadge = totalItems > 99 ? '99+' : totalItems;
 
   // Handle responsive behavior
   useEffect(() => {
@@ -77,22 +98,6 @@ const Header: FC<HeaderProps> = ({ onMenuToggle, isMenuOpen = false }) => {
       className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`} 
       role="banner"
     >
-      {/* Top Bar - Emergency & Info */}
-      <div className={styles.topBar}>
-        <div className={styles.topBarContainer}>
-          <div className={styles.topBarLeft}>
-            <MapPin size={14} aria-hidden="true" />
-            <span>Serving Juja, Kiambu County</span>
-          </div>
-          <div className={styles.topBarRight}>
-            <span className={styles.emergencyText}>24/7 Emergency Service Available</span>
-            <span className={styles.separator}>|</span>
-            <Link href="/contact" className={styles.topBarLink}>
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </div>
 
       {/* Main Header */}
       <div className={styles.mainHeader}>
@@ -173,6 +178,56 @@ const Header: FC<HeaderProps> = ({ onMenuToggle, isMenuOpen = false }) => {
                 <span className={styles.searchBtnText}>Search</span>
               </button>
             </form>
+
+{/* Actions Section - Desktop & Tablet */}
+        <nav className={styles.actionsSection} aria-label="User actions">
+          {/* Wishlist - Hidden on Mobile */}
+          <Link
+            href="/wishlist"
+            className={styles.actionButton}
+            aria-label="View wishlist"
+            title="Wishlist"
+          >
+            <Heart size={24} />
+          </Link>
+
+
+          {/* Account - Hidden on Mobile */}
+          <Link
+            href="/auth/login"
+            className={styles.actionButton}
+            aria-label="Sign in to your account"
+            title="Account"
+          >
+            <User size={24} />
+            <div className={styles.accountInfo}>
+              <span className={styles.accountLabel}>Sign In</span>
+              <span className={styles.accountSubLabel}>Account</span>
+            </div>
+          </Link>
+
+          {/* Cart - Always Visible, Next to Menu on Mobile */}
+          <Link
+            href="/cart"
+            className={styles.cartButton}
+            aria-label={cartAriaLabel}
+            title="View Cart"
+          >
+            <div className={styles.cartIconWrapper}>
+              <ShoppingBag size={24} />
+              {totalItems > 0 && (
+                <span className={styles.cartBadge} aria-hidden="true">
+                  {displayBadge}
+                </span>
+              )}
+            </div>
+            <div className={styles.cartPriceWrapper}>
+              <span className={styles.cartPrice}>{formattedPrice}</span>
+            </div>
+          </Link>
+
+
+            </nav>
 
             {/* Contact Section - Desktop */}
             <div className={styles.contactSection}>

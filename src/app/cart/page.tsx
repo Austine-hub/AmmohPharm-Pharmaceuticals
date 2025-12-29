@@ -22,6 +22,7 @@ export default function CartPage() {
     updateQuantity,
     isInitialized,
     addToCart,
+    clearCart,
   } = useCart();
 
   const { wishlist, removeFromWishlist } = useWishlist();
@@ -97,18 +98,32 @@ export default function CartPage() {
     );
   }
 
+
+
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <main className={styles.main}>
+
           <header className={styles.header}>
-            <h1>Shopping Cart</h1>
-            {items.length > 0 && (
-              <span className={styles.itemCount}>
-                {items.length} {items.length === 1 ? 'item' : 'items'}
-              </span>
-            )}
+            <div className={styles.titleGroup}>
+              <h1>Shopping Cart</h1>
+
+              {items.length > 0 && (
+                <span className={styles.itemBadge}>
+                  {items.length} {items.length === 1 ? "item" : "items"}
+                </span>
+              )}
+
+                <button onClick={clearCart} className={styles.clearBtn}>Clear Cart</button>
+            </div>
+
+            <a href="#order-summary" className={styles.summaryLink}>
+              View order summary
+            </a>
           </header>
+
 
           {/* Available Items */}
           {availableItems.length > 0 && (
@@ -231,7 +246,7 @@ export default function CartPage() {
 
         {/* Order Summary Sidebar */}
         <aside className={styles.sidebar}>
-          <div className={styles.summary}>
+          <div className={styles.summary} id="order-summary" >
             <h2>Order Summary</h2>
             <div className={styles.summaryRow}>
               <span>Subtotal</span>
